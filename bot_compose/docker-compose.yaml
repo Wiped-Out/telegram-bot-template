@@ -1,0 +1,30 @@
+version: '3.3'
+
+services:
+  redis:
+    image: redis:7.0
+    volumes:
+      - redisdata:/data
+
+  postgres:
+    build:
+      context: ./postgres
+    env_file:
+      - ./postgres/.env
+    volumes:
+      - bot_db:/var/lib/postgresql/data
+    restart: always
+
+  bot:
+    build:
+      context: ./bot
+    env_file:
+      - ./bot/.env
+    depends_on:
+      - redis
+      - postgres
+
+
+volumes:
+  redisdata:
+  bot_db:

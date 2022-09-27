@@ -1,0 +1,7 @@
+aiogram==2.22.1
+pydantic==1.9.2
+sqlalchemy==1.4.40
+python-dotenv==0.20.0
+loguru==0.6.0
+psycopg2-binary==2.9.3
+aioredis==2.0.1
